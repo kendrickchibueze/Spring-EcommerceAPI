@@ -1,4 +1,4 @@
-package com.cck.Spring_Ecommerce_API.controller;
+package com.cck.Spring_Ecommerce_API.controller.customer;
 
 
 import com.cck.Spring_Ecommerce_API.dto.ProductDto;
