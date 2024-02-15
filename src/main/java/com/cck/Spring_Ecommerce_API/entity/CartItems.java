@@ -1,6 +1,7 @@
 package com.cck.Spring_Ecommerce_API.entity;
 
 
+import com.cck.Spring_Ecommerce_API.dto.CartItemsDto;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.OnDelete;
@@ -33,6 +34,19 @@ public class CartItems {
     @JoinColumn(name = "order_id")
     private Order order;
 
+    public CartItemsDto getCartDto(){
+      CartItemsDto cartItemsDto = new CartItemsDto();
+      cartItemsDto.setId(id);
+      cartItemsDto.setPrice(price);
+      cartItemsDto.setProductId(product.getId());
+      cartItemsDto.setQuantity(quantity);
+      cartItemsDto.setUserId(user.getId());
+      cartItemsDto.setProductName(product.getName());
+      cartItemsDto.setReturnedImg(product.getImg());
+
+      return cartItemsDto;
+
+    }
 }
 
 

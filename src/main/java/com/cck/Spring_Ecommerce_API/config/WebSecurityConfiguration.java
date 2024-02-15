@@ -31,11 +31,12 @@ public class WebSecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(request ->
-                        request.requestMatchers("/authenticate", "/sign-up","api/customer/cart", "/api/**",   "/order/**").permitAll()
-                              /*  .requestMatchers("/api/customer/cart")
-                                .hasAnyAuthority(  "CUSTOMER")*/
+                        request.requestMatchers("/authenticate", "/sign-up", "/api/**",
+                                "/api/admin/coupons","/order/**").permitAll()
+                                .requestMatchers("/api/customer/cart")
+                                .hasAnyAuthority(  "CUSTOMER")
                                 .anyRequest().authenticated())
-                                .sessionManagement(manager->manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .sessionManagement(manager->manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                                 .addFilterBefore(
                                         authFilter, UsernamePasswordAuthenticationFilter.class
                                 );
