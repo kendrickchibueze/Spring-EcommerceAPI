@@ -32,6 +32,7 @@ public class Product {
     @JsonIgnore
     private Category category;
 
+    //more work
     public ProductDto getDto() {
         ProductDto productDto = new ProductDto();
         productDto.setId(id);
